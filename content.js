@@ -1,14 +1,13 @@
 var port = chrome.runtime.connect({name: "data"});
 
-console.log("please work");
-
-document.addEventListener("click", function(e) {
-    if (e.shiftKey) {
+document.addEventListener("click", function(evnt) {
+    if (evnt.shiftKey) {
         console.log("shift clicked");
-        port.postMessage({joke: "yes shift"});
+        port.postMessage({data: "yes shift"});
     }
-    else {
-        console.log("normal clicked");
-        port.postMessage({joke: "no shift"});
-    }
+});
+
+window.addEventListener("scroll", function(evnt) {
+    console.log(window.pageYOffset);
+    port.postMessage({data:window.pageYOffset.toFixed().toString()})
 });

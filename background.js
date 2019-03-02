@@ -5,13 +5,13 @@ chrome.runtime.onInstalled.addListener(function() {
 
 chrome.runtime.onConnect.addListener(function(port) {
     port.onMessage.addListener(function(msg) {
-        if (msg.joke == "yes shift") {
+        if (msg.data == "yes shift") {
             displayDist("SHFT");
             console.log("received shift");
         }
         else {
-            displayDist("NORM");
-            console.log("received norm");
+            displayDist(msg.data);
+            console.log("received " + msg.data);
         }
     });
 });

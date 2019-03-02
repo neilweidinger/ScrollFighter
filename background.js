@@ -1,3 +1,5 @@
+var total = 0;
+
 chrome.runtime.onInstalled.addListener(function() {
     console.log("Hello world");
     displayDist("____");
@@ -10,7 +12,8 @@ chrome.runtime.onConnect.addListener(function(port) {
             console.log("received shift");
         }
         else {
-            displayDist(msg.data);
+            total += Math.abs(msg.data);
+            displayDist(total.toFixed().toString());
             console.log("received " + msg.data);
         }
     });

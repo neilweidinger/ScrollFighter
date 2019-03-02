@@ -7,15 +7,9 @@ chrome.runtime.onInstalled.addListener(function() {
 
 chrome.runtime.onConnect.addListener(function(port) {
     port.onMessage.addListener(function(msg) {
-        if (msg.data == "yes shift") {
-            displayDist("SHFT");
-            console.log("received shift");
-        }
-        else {
-            total += Math.abs(msg.data);
-            displayDist(total.toFixed().toString());
-            console.log("received " + msg.data);
-        }
+        total += Math.abs(msg.data);
+        displayDist(total.toFixed().toString());
+        console.log("received " + msg.data);
     });
 });
 

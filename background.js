@@ -1,4 +1,5 @@
 var totalPixels = 0;
+var limit = 35;
 var hitLimit = 0;
 
 // runs when started
@@ -12,7 +13,7 @@ chrome.runtime.onConnect.addListener(function(port) {
         totalPixels += Math.abs(msg.data);
         displayOnBadge(pixelToDist(totalPixels).toString());
 
-        if (pixelToDist(totalPixels) > 20) {
+        if (pixelToDist(totalPixels) > limit) {
             hitLimit++;
             if (hitLimit % 10 == 0) {
                 sendKO();
@@ -26,17 +27,43 @@ function pixelToDist(pixels) {
     return (pixels / 227).toFixed() // MacBook Pro is 227 ppi
 }
 
+var currentNotification = 0;
+var notifications = [
+    {
+        distance : 10,
+        title : "10 inches",
+        message : "you could have spent those 2 kilometers walking outside instead, shame"
+    },
+    {
+        distance : 20,
+        title : "20 inches",
+        message : "get off the computer and go outside you loser"
+    },
+    {
+        distance : 30,
+        title : "30 inches",
+        message : "you just scrolled the length of the nile, do you have no life"
+    },
+    {
+        distance : 100000000,
+        title : "shouldn't reach here (sentinel value)",
+        message : "kinda crappy programming practice but I'm so tired rn"
+    }
+]
+
 // expects a string
 function displayOnBadge(distance) {
-    if (distance == "10") {
-        console.log("should have notification");
+    if (distance > notifications[currentNotification].distance) {
+        var current = notifications[currentNotification];
 
-        chrome.notifications.create("10", {
+        chrome.notifications.create({
 			type : "basic",
 			iconUrl : "resources/scrollFighter.png",
-			title : "10 inches",
-			message : "test notification"
-		}, function(){});
+			title : current.title,
+			message : current.message
+		});
+
+        currentNotification++;
     }
 
     chrome.browserAction.setBadgeText({

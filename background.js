@@ -15,7 +15,7 @@ chrome.runtime.onConnect.addListener(function(port) {
 
         if (pixelToDist(totalPixels) > limit) {
             hitLimit++;
-            if (hitLimit % 10 == 0) {
+            if (hitLimit % 5 == 0) {
                 sendKO();
             }
         }

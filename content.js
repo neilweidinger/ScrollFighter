@@ -52,6 +52,10 @@ function punchStuff() {
     document.querySelector("#kenImg").src = chrome.runtime.getURL("resources/punch.gif");
     document.querySelector("#kenDiv").style.left = window.innerWidth - 300 + "px";
 
+    var punchAudio = new Audio();
+    punchAudio.src = chrome.runtime.getURL("resources/punch.mp3");
+    punchAudio.play();
+
     setTimeout(function() {
         document.querySelector("#kenImg").src = chrome.runtime.getURL("resources/stance.gif");
         document.querySelector("#kenDiv").style.left = window.innerWidth - 100 + "px";

@@ -54,6 +54,8 @@ var notifications = [
 // expects a string
 function displayOnBadge(distance) {
     if (distance > notifications[currentNotification].distance) {
+        sendPunch();
+
         var current = notifications[currentNotification];
 
         chrome.notifications.create({
@@ -69,6 +71,16 @@ function displayOnBadge(distance) {
     chrome.browserAction.setBadgeText({
 		text:distance
 	});
+}
+
+function sendPunch() {
+    chrome.tabs.query(
+        {currentWindow: true, active : true}, function(tabArray) {
+            let currentTabID = tabArray[0].id;
+            let contentPort = chrome.tabs.connect(currentTabID, {name: "instruction"});
+            contentPort.postMessage({instruction:"punch"});
+        }
+    );
 }
 
 function sendKO() {

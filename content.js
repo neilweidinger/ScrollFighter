@@ -40,6 +40,9 @@ chrome.runtime.onConnect.addListener(function(p) {
         if (msg.instruction == "KO") {
             koStuff();
         }
+        if (msg.instruction == "punch") {
+            console.log("punch");
+        }
     });
 });
 

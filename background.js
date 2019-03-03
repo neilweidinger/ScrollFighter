@@ -1,10 +1,12 @@
 var total = 0;
 
+// runs when started
 chrome.runtime.onInstalled.addListener(function() {
     console.log("Hello world");
     displayDist("____");
 });
 
+// listener for when we receive messages from content script
 chrome.runtime.onConnect.addListener(function(port) {
     port.onMessage.addListener(function(msg) {
         total += Math.abs(msg.data);

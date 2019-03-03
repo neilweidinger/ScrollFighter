@@ -2,7 +2,7 @@ body {
     background-color: #0e0828;
 }
 
-h1 {
+h1, h4 {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     color: white;

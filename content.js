@@ -87,6 +87,7 @@ function koStuff() {
     ko.style.fontFamily = "'Press Start 2P', cursive";
     ko.style.color = "white";
     ko.style.textAlign = "center";
+    ko.style.top = "300px";
     ko.style.fontSize = "230px";
 
     document.head.appendChild(googleFontLink);

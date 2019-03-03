@@ -26,9 +26,21 @@ function pixelToDist(pixels) {
     return (pixels / 227).toFixed() // MacBook Pro is 227 ppi
 }
 
-function displayOnBadge(word) {
+// expects a string
+function displayOnBadge(distance) {
+    if (distance == "10") {
+        console.log("should have notification");
+
+        chrome.notifications.create("10", {
+			type : "basic",
+			iconUrl : "resources/scrollFighter.png",
+			title : "10 inches",
+			message : "test notification"
+		}, function(){});
+    }
+
     chrome.browserAction.setBadgeText({
-		text:word
+		text:distance
 	});
 }
 

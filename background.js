@@ -1,5 +1,5 @@
 var totalPixels = 0;
-var hitLimit = false;
+var hitLimit = 0;
 
 // runs when started
 chrome.runtime.onInstalled.addListener(function() {
@@ -13,8 +13,10 @@ chrome.runtime.onConnect.addListener(function(port) {
         displayOnBadge(pixelToDist(totalPixels).toString());
 
         if (pixelToDist(totalPixels) > 20) {
-            hitLimit = true;
-            sendKO();
+            hitLimit++;
+            if (hitLimit % 10 == 0) {
+                sendKO();
+            }
         }
     });
 });

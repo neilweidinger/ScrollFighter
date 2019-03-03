@@ -17,6 +17,6 @@
 
     "browser_action": {
         "default_popup": "popup.html",
-        "default_icon": "scrollFighter.png"
+        "default_icon": "resources/scrollFighter.png"
     }
 }

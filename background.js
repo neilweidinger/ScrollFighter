@@ -32,17 +32,17 @@ var notifications = [
     {
         distance : 10,
         title : "10 inches",
-        message : "you could have spent those 2 kilometers walking outside instead, shame"
+        message : "You could have spent those 2 kilometers you just scrolled walking outside instead, shame"
     },
     {
         distance : 20,
         title : "20 inches",
-        message : "get off the computer and go outside you loser"
+        message : "Get off the computer and do something productive you nincompoop"
     },
     {
         distance : 30,
         title : "30 inches",
-        message : "you just scrolled the length of the nile, do you have no life"
+        message : "You've just scrolled to London and back! You have any idea how far that is?? Stop procrastinating!!!"
     },
     {
         distance : 100000000,

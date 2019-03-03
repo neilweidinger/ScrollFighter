@@ -2,11 +2,12 @@ var port = chrome.runtime.connect({name: "scroll data"});
 var previousScroll = window.pageYOffset;
 
 var kenDiv = document.createElement("div");
+kenDiv.setAttribute("id", "kenDiv");
 kenDiv.style.position = "fixed";
 // kenDiv.style.width = "50px";
 // kenDiv.style.height = "50px";
 kenDiv.style.backgroundColor = "transparent";
-kenDiv.style.bottom = "0px";
+kenDiv.style.bottom = "20px";
 kenDiv.style.left = window.innerWidth - 100 + "px";
 kenDiv.style.pointerEvents = "none";
 kenDiv.style.zIndex = "100000000"; // 1 less than youtube and netflix
@@ -14,6 +15,7 @@ kenDiv.style.backgroundColor = "transparent";
 
 var kenImg = document.createElement("img");
 kenDiv.appendChild(kenImg);
+kenImg.setAttribute("id", "kenImg");
 kenImg.style.position = "absolute";
 // kenImg.style.width = "100%";
 // kenImg.style.height = "100%";
@@ -41,10 +43,20 @@ chrome.runtime.onConnect.addListener(function(p) {
             koStuff();
         }
         if (msg.instruction == "punch") {
-            console.log("punch");
+            punchStuff();
         }
     });
 });
+
+function punchStuff() {
+    document.querySelector("#kenImg").src = chrome.runtime.getURL("resources/punch.gif");
+    document.querySelector("#kenDiv").style.left = window.innerWidth - 300 + "px";
+
+    setTimeout(function() {
+        document.querySelector("#kenImg").src = chrome.runtime.getURL("resources/stance.gif");
+        document.querySelector("#kenDiv").style.left = window.innerWidth - 100 + "px";
+    }, 2000);
+}
 
 function koStuff() {
     console.log("HIT LIMIT");

@@ -1,1 +1,1 @@
-![alt text](https://raw.githubusercontent.com/neilweidinger/ScrollFighter/master/scrollFighter.png)
+<img src="scrollFighter.png" height="60%" width="60%">

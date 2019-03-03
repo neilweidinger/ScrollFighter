@@ -1,4 +1,5 @@
 var totalPixels = 0;
+var hitLimit = false;
 
 // runs when started
 chrome.runtime.onInstalled.addListener(function() {
@@ -12,7 +13,7 @@ chrome.runtime.onConnect.addListener(function(port) {
         displayOnBadge(pixelToDist(totalPixels).toString());
 
         if (pixelToDist(totalPixels) > 20) {
-            console.log("Over 20 inches");
+            hitLimit = true;
             sendKO();
         }
     });

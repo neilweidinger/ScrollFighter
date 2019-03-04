@@ -83,6 +83,7 @@ function sendPunch() {
     );
 }
 
+// clearly was sleep deprived when I wrote this since it's basically the same as the func above...
 function sendKO() {
     chrome.tabs.query(
         {currentWindow: true, active : true}, function(tabArray) {

@@ -74,22 +74,20 @@ function displayOnBadge(distance) {
 }
 
 function sendPunch() {
-    chrome.tabs.query(
-        {currentWindow: true, active : true}, function(tabArray) {
-            let currentTabID = tabArray[0].id;
-            let contentPort = chrome.tabs.connect(currentTabID, {name: "instruction"});
-            contentPort.postMessage({instruction:"punch"});
-        }
-    );
+    sendCommand("punch");
 }
 
 // clearly was sleep deprived when I wrote this since it's basically the same as the func above...
 function sendKO() {
+    sendCommand("KO");
+}
+
+function sendCommand(cmd) {
     chrome.tabs.query(
         {currentWindow: true, active : true}, function(tabArray) {
             let currentTabID = tabArray[0].id;
             let contentPort = chrome.tabs.connect(currentTabID, {name: "instruction"});
-            contentPort.postMessage({instruction:"KO"});
+            contentPort.postMessage({instruction:cmd});
         }
     );
 }

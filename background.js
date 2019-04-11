@@ -77,11 +77,11 @@ function sendPunch() {
     sendCommand("punch");
 }
 
-// clearly was sleep deprived when I wrote this since it's basically the same as the func above...
 function sendKO() {
     sendCommand("KO");
 }
 
+// shouldn't access sendCommand directly (use sendPunch and sendKO instead) bc only KO and punch commands implemented
 function sendCommand(cmd) {
     chrome.tabs.query(
         {currentWindow: true, active : true}, function(tabArray) {
